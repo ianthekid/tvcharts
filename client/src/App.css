@@ -1,0 +1,55 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  color: white;
+  text-align: center;
+}
+
+#ratings {
+  font-size: calc(10px + 1.2vmin);
+}
+#ratings > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+#ratings > .row > .col-1 {
+  float: none;
+  flex: 0 0 3.25em;
+  max-width: 3.25em;
+  display: inline-block;
+}
+[class*='rating'] {
+  border: 1px solid white;
+  text-align: center;
+  position: relative;
+  height: 2.5em;
+}
+[class*='rating'] a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  position: absolute;
+  width: 100%;
+  line-height: 2.5em;
+}
+.rating-1,
+.rating-2,
+.rating-3,
+.rating-4,
+.rating-5 {
+  background-color: #bd2130;
+}
+.rating-6 {
+  background-color: #e04a59
+}
+.rating-7 {
+  background-color: #ffc107
+}
+.rating-8 {
+  background-color: #7adf90
+}
+.rating-9 {
+  background-color: #28a745
+}

@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: app
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    links:
+      - "mongo"
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+     - "27017:27017"
+    networks:
+      - app-network
+    logging:
+      driver: none
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    build: ./nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
