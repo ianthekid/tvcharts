@@ -1,37 +1,23 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip'
 
-function getRatings(tconst) {
-  return fetch(`http://localhost:3001/ratings/${tconst}`)
-  .then(res => res.json())
-  .then(function(response) {
-    //Data returns array of objs [{season: #, episodes: []}]
-    return response;
-  });
-}
-
-
 function Episode(props) {
 
-  const [ratings, setratings] = useState(props.rating);
+  const [ep, setEp] = useState(props.episode);
 
   useEffect(() => {
-    if(props.rating === "N/A") {
-      getRatings(props.imdb)
-      .then((res) => {
-        setratings(res.averageRating)
-      })  
-    }
+    setEp(props.episode)
   }, [props]);
 
   return (
-    <Col className={`mb-1 d-flex justify-content-center align-items-center rating-${Math.floor(ratings)}`}>
-      <a data-tip data-for={props.id} href={`https://www.imdb.com/title/${props.imdb}/`} target="_blank">
-        {ratings}
+    <Col className={`mb-1 d-flex justify-content-center align-items-center rating-${Math.floor(ep.averageRating)}`}>
+      <a data-tip data-for={props.id} href={`https://www.imdb.com/title/${ep.tconst}/`} target="_blank">
+        {ep.averageRating}
       </a>
       <ReactTooltip id={props.id}>
-        <span>{props.title}</span>
+        <h6 className='mb-0'>{ep.title}</h6>
+        <em>{ep.numVotes.toLocaleString()} votes</em>
       </ReactTooltip>
     </Col>
   );

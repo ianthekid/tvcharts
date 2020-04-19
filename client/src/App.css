@@ -53,3 +53,8 @@
 .rating-9 {
   background-color: #28a745
 }
+.rating-10 {
+  background-color: #00b388;
+  box-shadow: 0 0 15px #00b388;
+  text-shadow: 0 0 15px #00b388;
+}

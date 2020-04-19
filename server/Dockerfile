@@ -1,5 +1,7 @@
 FROM node:13
 WORKDIR /app
+RUN apt-get update
+RUN apt install -y mongodb
 COPY package.json /app
 RUN npm install
 COPY . /app

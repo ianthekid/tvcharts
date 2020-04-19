@@ -4,23 +4,30 @@ import { Row, Col, Image } from 'react-bootstrap';
 function ShowDetails(props) {
 
   const [data, setData] = useState({});
+  const [endYear, setEnd] = useState('');
 
   useEffect(() => {
-    setData( props )
-  }, [props]);
+    setData(props.show);
+    setEnd((props.show.endYear === "\\N") ? '' : props.show.endYear )
+  }, [props.show]);
 
   return (
     <Col className="text-left">
       <Row>
-        <a href={`https://www.imdb.com/title/${data.imdbID}/`} target="_blank">
+        { /*
+        <a href={`https://www.imdb.com/title/${data.tconst}/`} target="_blank">
           <Image fluid src={data.poster} className="p-2" />
         </a>
+      */ }
       </Row>
-      <a href={`https://www.imdb.com/title/${data.imdbID}/`} target="_blank">
-        <h4>{data.title}</h4>
+      <a href={`https://www.imdb.com/title/${data.tconst}/`} target="_blank">
+        <h4>{data.primaryTitle}</h4>
       </a>
-      <h6>{data.year}</h6>
-      <h6>Rating: <strong>{data.imdbRating}</strong> <em>({data.imdbVotes})</em></h6>
+      <h6>{data.startYear} - {endYear}</h6>
+      <h4>
+        <strong className='pr-2'>{data.averageRating}</strong>
+        <small>({(data.numVotes) && data.numVotes.toLocaleString()})</small>
+      </h4>
     </Col>
   );
 }

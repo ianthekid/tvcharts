@@ -7,7 +7,7 @@ function SearchResults(props) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    setList( props.shows )
+    setList(props.shows)
   }, [props]);
 
   return (
@@ -22,7 +22,7 @@ function SearchResults(props) {
                 {s.primaryTitle}
               </Link>
             </h3>
-            <h5>{s.startYear} - {s.endYear}</h5>
+            <h5>{s.startYear} - {(s.endYear === "\\N") ? '' : s.endYear}</h5>
           </Col>
         </Row>
       ))}

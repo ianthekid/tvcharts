@@ -8,7 +8,7 @@ function BestWorst(props) {
   const [worst, setworst] = useState([]);
 
   useEffect(() => {
-    props.seasons.sort((a, b) => parseFloat(a.imdbRating) - parseFloat(b.imdbRating));
+    props.seasons.sort((a, b) => a.averageRating - b.averageRating);
     setBest( props.seasons.slice(-3).reverse() )
     setworst( props.seasons.slice(0, 3) )
   }, [props]);

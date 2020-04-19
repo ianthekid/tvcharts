@@ -13,10 +13,10 @@ function List(props) {
     <Col>
       {list.map((ep, i) => (
         <Row key={i}>
-          <Col xs={2}>{ep.imdbRating}</Col>
+          <Col xs={2}>{ep.averageRating}</Col>
           <Col className="text-left">
-            <a href={`https://www.imdb.com/title/${ep.imdbID}/`} target="_blank">
-              {ep.Title}
+            <a href={`https://www.imdb.com/title/${ep.tconst}/`} target="_blank">
+              {ep.title}
             </a>
           </Col>
         </Row>
