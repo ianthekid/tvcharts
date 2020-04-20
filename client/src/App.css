@@ -8,9 +8,12 @@
 
 #ratings {
   font-size: calc(10px + 1.2vmin);
+  transform-origin: 0 0;
 }
 #ratings > .row {
+  /*
   overflow-x: auto;
+  */
   white-space: nowrap;
   flex-wrap: nowrap;
 }
@@ -25,6 +28,8 @@
   text-align: center;
   position: relative;
   height: 2.5em;
+  transform-origin: 0 0;
+  transform: scale(1);
 }
 [class*='rating'] a {
   text-decoration: none;

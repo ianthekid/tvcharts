@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { ShowPoster } from './'
 
 function SearchResults(props) {
 
@@ -8,25 +9,26 @@ function SearchResults(props) {
 
   useEffect(() => {
     setList(props.shows)
-  }, [props]);
+  }, [props.shows]);
 
   return (
-    <Col>
+    <Row>
       {list.map((s, i) => (
-        <Row key={i} className="mb-3">
-          <Col xs={2}>
-          </Col>
-          <Col className="text-left">
-            <h3>
-              <Link to={`/show/${s.tconst}`}>
-                {s.primaryTitle}
-              </Link>
-            </h3>
-            <h5>{s.startYear} - {(s.endYear === "\\N") ? '' : s.endYear}</h5>
-          </Col>
-        </Row>
+        <Col xs={6} sm={4} md={3} key={i} className='text-center p-3'>
+          <ShowPoster 
+            tconst={s.tconst}
+            target="_self"
+            link={`/show/${s.tconst}`}
+          />
+          <Link to={`/show/${s.tconst}`}>
+            <h5 className='mt-2 mb-0'>
+              {s.primaryTitle}
+            </h5>
+          </Link>
+          <em>{s.startYear} - {(s.endYear === "\\N") ? '' : s.endYear}</em>
+        </Col>
       ))}
-    </Col>
+    </Row>
   );
 }
 

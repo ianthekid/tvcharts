@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { BestWorst, Seasons, ShowDetails } from './';
 import { Row, Col } from 'react-bootstrap';
-
-
-function getShow(title, callback) {
-  fetch(`http://tvratingschart.com/api/show/${encodeURIComponent(title)}`)
-  .then(res => res.json())
-  .then(data => callback(data[0]));
-}
+import api from '../api'
 
 function Show(props) {
   const [show, setShow] = useState({});
   const [allSeasons, setAllSeasons] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    getShow(props.match.params.tconst, (data) => {
+    api.show(props.match.params.tconst, (data) => {
       setShow(data)
       setLoading(false)
     })
@@ -31,10 +26,12 @@ function Show(props) {
             <ShowDetails show={show} />
             <BestWorst seasons={allSeasons} />
           </Col>
-          <Col lg={10} md={9} sm={8} id="ratings" className="pl-4">
+          <Col lg={10} md={9} sm={8} id="ratings" className="pl-4" style={{transform: `scale(${scale}`}}>
             <Seasons
               tconst={show.tconst}
               handleAllSeasons={setAllSeasons}
+              handleScale={setScale}
+              scale={scale}
             />
           </Col>
         </Row>

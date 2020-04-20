@@ -4,6 +4,7 @@ import Home from './Home';
 import List from './List';
 import Search from './Search';
 import SearchForm from './SearchForm';
+import ShowPoster from './ShowPoster';
 import SearchResults from './SearchResults';
 import Seasons from './Seasons';
 import Show from './Show';
@@ -16,6 +17,7 @@ export {
   List,
   Search,
   SearchForm,
+  ShowPoster,
   SearchResults,
   Seasons,
   Show,

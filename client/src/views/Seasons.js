@@ -1,26 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Episode } from './';
 import { Row, Col } from 'react-bootstrap';
-
-function getEpisodes(tconst) {
-  return fetch(`http://tvratingschart.com/api/seasons/${tconst}`)
-  .then(res => res.json())
-  .then(function(response) {
-    //Data returns array of Objs unsorted. Loop through items and group into ordered Obj for each season
-    let sorted = response.reduce((r, a) => {
-      r[a.seasonNumber] = r[a.seasonNumber] || [];
-      r[a.seasonNumber].push(a);
-      //sort season obj by episode
-      r[a.seasonNumber].sort((a,b) => (a.episodeNumber > b.episodeNumber) ? 1 : ((b.episodeNumber > a.episodeNumber) ? -1 : 0));
-      return r;
-    }, Object.create(null));
-    //return both for use in BestWorst and Seasons
-    return {
-      allEpisodes: response,
-      seasons: sorted
-    };
-  });
-}
+import windowResize from '../windowResize';
+import api from '../api';
 
 function Seasons(props) {
 
@@ -28,11 +10,12 @@ function Seasons(props) {
   const [isLoading, setLoading] = useState(true);
 
   const setShowtconst = useCallback((tconst) => {
-    getEpisodes(tconst)
+    api.episodes(tconst)
     .then((res) => {
       setSeasons(res.seasons);
-      handleAllSeasons(res.allEpisodes);
       setLoading(false);
+      handleAllSeasons(res.allEpisodes);
+      handleScale(windowResize.scale('ratings'))
     })
   }, []);
 
@@ -40,26 +23,41 @@ function Seasons(props) {
     props.handleAllSeasons(allSeasons)
   }, [])
 
+  const handleScale = useCallback((scale) => {
+    props.handleScale(scale)
+  }, [])
+
   useEffect(() => {
     setShowtconst(props.tconst)
+    //Resize window trigger with debounce timer
+    const handleResize = windowResize.debounce(e => {
+      let scale = windowResize.scale('ratings');
+      handleScale(scale)
+    });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [ props.tconst ])
+
 
   return (
     <Row>
       {isLoading ? (
         <div>Loading ...</div>
-      ) : Object.keys(seasons).map((s,index) => (
-        <Col xs={1} key={index} className="mr-1 p-0">
-          <strong>{s}</strong>
-          {seasons[s].map((e,i) => (
-            <Episode
-              key={i}
-              episode={e}
-              id={`S${e.seasonNumber}E${e.episodeNumber}`}
-            />
-          ))}
-        </Col>
-      ))}
+      ) : (
+        Object.keys(seasons).map((s,index) => (
+          <Col xs={1} key={index} className="mr-1 p-0">
+            <strong>{s}</strong>
+            {seasons[s].map((e,i) => (
+              <Episode
+                key={i}
+                episode={e}
+                scale={props.scale}
+                id={`S${e.seasonNumber}E${e.episodeNumber}`}
+              />
+            ))}
+          </Col>
+        ))
+      )}
     </Row>
   );
 }

@@ -11,11 +11,14 @@ function Episode(props) {
   }, [props]);
 
   return (
-    <Col className={`mb-1 d-flex justify-content-center align-items-center rating-${Math.floor(ep.averageRating)}`}>
-      <a data-tip data-for={props.id} href={`https://www.imdb.com/title/${ep.tconst}/`} target="_blank">
+    <Col className={`rating-${Math.floor(ep.averageRating)} mb-1 d-flex justify-content-center align-items-center`}>
+      <a target="_blank"
+        data-tip data-for={props.id} 
+        href={`https://www.imdb.com/title/${ep.tconst}/`}
+      >
         {ep.averageRating}
       </a>
-      <ReactTooltip id={props.id}>
+      <ReactTooltip id={props.id} type="dark">
         <h6 className='mb-0'>{ep.title}</h6>
         <em>{ep.numVotes.toLocaleString()} votes</em>
       </ReactTooltip>
