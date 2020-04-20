@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from "react-router-dom";
 import { Alert, Container, Row, Col } from 'react-bootstrap';
-import { SearchResults } from './';
-import { SearchForm } from './';
-
-function searchImdb(title, callback) {
-  fetch(`http://tvratingschart.com/api/search/${encodeURIComponent(title)}`)
-  .then(res => res.json())
-  .then(data => callback(data));
-}
+import { SearchForm, SearchResults } from './';
+import api from '../api';
+import pageTitle from '../pageTitle';
 
 function Search(props) {
 
@@ -36,12 +31,13 @@ function Search(props) {
     setLoading(true)
     setResults([])
 
-    searchImdb(q, (res) => {
+    api.search(q).then(res => {
       if(res.response === false) {
         setError(true)
       } else {
         setError(false)
         setResults(res.results)
+        pageTitle('search', q)
       }
       setLoading(false);
     })  
@@ -49,7 +45,7 @@ function Search(props) {
   
   useEffect(() => {
     handleQuery(props.match.params.query)
-  }, [ props.match.params.query ]) 
+  }, [ props.match.params.query, handleQuery ]) 
 
   return (
     <Container>

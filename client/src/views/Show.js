@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BestWorst, Seasons, ShowDetails } from './';
 import { Row, Col } from 'react-bootstrap';
-import api from '../api'
+import api from '../api';
+import pageTitle from '../pageTitle';
 
 function Show(props) {
   const [show, setShow] = useState({});
@@ -9,12 +10,17 @@ function Show(props) {
   const [isLoading, setLoading] = useState(true);
   const [scale, setScale] = useState(1);
 
-  useEffect(() => {
-    api.show(props.match.params.tconst, (data) => {
+  const handleShow = useCallback((tconst) => {
+    api.show(tconst).then(data => {
       setShow(data)
       setLoading(false)
+      pageTitle('show', data.primaryTitle)
     })
-  }, [props.match.params.tconst]);
+  }, [])
+
+  useEffect(() => {
+    handleShow(props.match.params.tconst)
+  }, [props.match.params.tconst, handleShow]);
 
   return (
     <div className="p-3">

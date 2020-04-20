@@ -16,10 +16,11 @@ function ShowDetails(props) {
         <ShowPoster 
           tconst={data.tconst}
           target="_blank"
+          rel="noopener noreferrer"
           link={`https://www.imdb.com/title/${data.tconst}/`}
         />
       </Row>
-      <a href={`https://www.imdb.com/title/${data.tconst}/`} target="_blank">
+      <a href={`https://www.imdb.com/title/${data.tconst}/`} target="_blank" rel="noopener noreferrer">
         <h4>{data.primaryTitle}</h4>
       </a>
       <h6>{data.startYear} - {(data.endYear === "\\N") ? '' : data.endYear}</h6>

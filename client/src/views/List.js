@@ -15,7 +15,7 @@ function List(props) {
         <Row key={i}>
           <Col xs={2}>{ep.averageRating}</Col>
           <Col className="text-left">
-            <a href={`https://www.imdb.com/title/${ep.tconst}/`} target="_blank">
+            <a href={`https://www.imdb.com/title/${ep.tconst}/`} target="_blank" rel="noopener noreferrer">
               {ep.title}
             </a>
           </Col>

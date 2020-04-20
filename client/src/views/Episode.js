@@ -13,6 +13,7 @@ function Episode(props) {
   return (
     <Col className={`rating-${Math.floor(ep.averageRating)} mb-1 d-flex justify-content-center align-items-center`}>
       <a target="_blank"
+        rel="noopener noreferrer" 
         data-tip data-for={props.id} 
         href={`https://www.imdb.com/title/${ep.tconst}/`}
       >

@@ -1,3 +1,17 @@
+const url = process.env.REACT_APP_API_URL;
+
+function search(title) {
+  return fetch(`${url}/search/${encodeURIComponent(title)}`)
+  .then(res => res.json())
+  .then(data => data);
+}
+
+function show(tconst) {
+  return fetch(`${url}/show/${tconst}`)
+  .then(res => res.json())
+  .then(data => data[0]);
+}
+
 function poster(tconst) {
   var url = `${process.env.REACT_APP_OMDB_URL}/?apikey=${process.env.REACT_APP_OMDB_KEY}&i=${tconst}`;
   return fetch(url)
@@ -9,14 +23,8 @@ function poster(tconst) {
   });
 }
 
-function show(title, callback) {
-  fetch(`${process.env.REACT_APP_API_URL}/show/${encodeURIComponent(title)}`)
-  .then(res => res.json())
-  .then(data => callback(data[0]));
-}
-
 function episodes(tconst) {
-  return fetch(`${process.env.REACT_APP_API_URL}/seasons/${tconst}`)
+  return fetch(`${url}/seasons/${tconst}`)
   .then(res => res.json())
   .then(function(response) {
     //Data returns array of Objs unsorted. Loop through items and group into ordered Obj for each season
@@ -35,4 +43,4 @@ function episodes(tconst) {
   });
 }
 
-export default {poster, show, episodes}
+export default {search, show, poster, episodes}
