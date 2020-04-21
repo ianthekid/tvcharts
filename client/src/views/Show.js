@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { BestWorst, Seasons, ShowDetails } from './';
 import { Row, Col } from 'react-bootstrap';
+import { BestWorst, Seasons, ShowDetails, SearchForm } from './';
 import api from '../api';
 import pageTitle from '../pageTitle';
 
@@ -24,6 +24,9 @@ function Show(props) {
 
   return (
     <div className="p-3">
+      <Row>
+        <SearchForm />
+      </Row>
       {isLoading ? (
         <div>Loading ...</div>
       ) : (

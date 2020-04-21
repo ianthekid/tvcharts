@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
-function SearchForm(props) {
+function SearchForm() {
 
-  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('');
+  const history = useHistory();
 
-  function handleChange(e) {
-    props.handleChange(e.target.value);
+  function handleChange(e){
+    setQuery(e.target.value)
   }
 
   function handleSearch(e) {
-    props.handleSearch(e);
+    e.preventDefault();
+    setQuery('')
+    history.push(`/search/${query}`)
   }
-  
-  useEffect(() => {
-    setSearch(props.search)
-  }, [ props.search ]) 
 
   return (
     <Form onSubmit={handleSearch}>
@@ -25,7 +25,7 @@ function SearchForm(props) {
             <Form.Control 
               type="text" 
               onChange={handleChange}
-              value={search}
+              value={query}
               autoComplete="off"
               autoCorrect="off"
               spellCheck="off"

@@ -93,7 +93,7 @@ app.get('/api/search/:query', function(req, res){
           "rating.numVotes" : -1
         }
       }, { 
-        $limit: 100
+        $limit: 20
       }, { 
         $unwind: "$rating" 
       }, { 

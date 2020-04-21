@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useHistory } from "react-router-dom";
 import { Alert, Container, Row, Col } from 'react-bootstrap';
 import { SearchForm, SearchResults } from './';
 import api from '../api';
@@ -7,25 +6,13 @@ import pageTitle from '../pageTitle';
 
 function Search(props) {
 
-  const history = useHistory();
   const [query, setQuery] = useState('');
-  const [search, setSearch] = useState('');
   const [error, setError] = useState(false);
   const [results, setResults] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  function handleChange(input){
-    setSearch(input)
-  }
-
-  function handleSearch(e) {
-    e.preventDefault();
-    history.push(`/search/${search}`)
-  }
-
   const handleQuery = useCallback((q) => {
     //Reset data
-    setSearch('')
     setQuery(q)
     setError(false)
     setLoading(true)
@@ -49,11 +36,7 @@ function Search(props) {
 
   return (
     <Container>
-      <SearchForm
-        handleSearch={handleSearch}
-        handleChange={handleChange}
-        search={search}
-      />
+      <SearchForm />
       {(isLoading) &&
         <div>Searching ...</div>
       }
