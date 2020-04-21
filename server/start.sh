@@ -44,7 +44,7 @@ do
   for filename in $dir/chunks/$file/*.json
   do
     echo "import $filename into $file"
-    mongoimport -h mongo:27017 --jsonArray -d tvratings -c $file --file $filename &> /dev/null
+    mongoimport -h mongo:27017 --jsonArray -d tvratings -c $file --file $filename &> /dev/null &
   done
 done
 echo "Waiting on mongodb import to finish. This may take a few mins..."

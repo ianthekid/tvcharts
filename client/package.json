@@ -1,5 +1,6 @@
 {
-  "name": "client",
+  "name": "tv-ratings-chart-client",
+  "homepage": "http://tvratings.test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
