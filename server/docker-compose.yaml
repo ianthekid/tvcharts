@@ -5,6 +5,7 @@ services:
     container_name: app
     image: app
     build: .
+    restart: always
     ports:
       - "3000:3000"
     networks:
@@ -14,6 +15,7 @@ services:
   mongo:
     container_name: mongo
     image: mongo
+    restart: always
     ports:
      - "27017:27017"
     networks:
@@ -24,7 +26,7 @@ services:
     container_name: nginx
     image: nginx:mainline-alpine
     build: ./nginx
-    restart: unless-stopped
+    restart: always
     ports:
       - "80:80"
     depends_on:

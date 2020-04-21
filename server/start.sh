@@ -2,7 +2,7 @@
 echo "Running startup script"
 
 ## STEP 1: Download source files
-echo "Download data source files..."
+echo "Downloading data source files..."
 dir="./files"
 files="basics ratings episode"
 for file in $files
@@ -44,13 +44,13 @@ do
   for filename in $dir/chunks/$file/*.json
   do
     echo "import $filename into $file"
-    mongoimport -h mongo:27017 --jsonArray -d tvratings -c $file --file $filename &
+    mongoimport -h mongo:27017 --jsonArray -d tvratings -c $file --file $filename &> /dev/null
   done
-  echo "Waiting on mongodb import to finish"
+  echo "Waiting on mongodb import to finish. This may take a few mins..."
 done
 wait
 
-echo "Delete all source and chunk files now that we have a DB"
+echo "Deleted all source and chunk files now that we have a DB"
 rm -rf $dir
 
 ## STEP 4: Open up API calls to access database
