@@ -2,21 +2,22 @@ var mongo = require('./mongo.js');
 
 mongo(async client => {
 
-  var list = ["episode", "ratings", "basics"];
-
   try {
     const db = client.db("tvratings");
 
-    //init collections
-    list.map(item => {
-      let collection = db.collection(item);
-      collection.countDocuments().then(res => {
-        if(res != 0)
-          col.drop()
-        else
-          db.createCollection(item)
+    //drop collections if they already exist
+    db.listCollections().toArray().then(res => {
+      var list = ["episode", "ratings", "basics"];
+      list.map(item => {
+        if( res.find(x => x.name === item) )
+          db.collection(item).drop()
       })
     })
+
+    //init collections
+    await db.createCollection("episode")
+    await db.createCollection("ratings")
+    await db.createCollection("basics")
 
     //init indexing
     await db.collection("episode").createIndex({parentTconst: 1})

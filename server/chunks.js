@@ -102,5 +102,7 @@ readline.createInterface({
     //write chunk to file as JSON
     fs.writeFile(jsonFile, JSON.stringify(jsonChunk), () => {});
   }
-  console.log(`Done: ${args[0]} records ${start}-${max} / split into ${doneCnt} files`)
+  //only log when files are created
+  if(doneCnt)
+    console.log(`Done: ${args[0]} records ${start}-${max} / split into ${doneCnt} files`)
 });

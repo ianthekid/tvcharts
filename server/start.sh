@@ -46,8 +46,8 @@ do
     echo "import $filename into $file"
     mongoimport -h mongo:27017 --jsonArray -d tvratings -c $file --file $filename &> /dev/null
   done
-  echo "Waiting on mongodb import to finish. This may take a few mins..."
 done
+echo "Waiting on mongodb import to finish. This may take a few mins..."
 wait
 
 echo "Deleted all source and chunk files now that we have a DB"
