@@ -6,11 +6,11 @@ mongo(async client => {
     const db = client.db("tvratings");
 
     //drop collections if they already exist
-    db.listCollections().toArray().then(res => {
+    await db.listCollections().toArray().then(res => {
       var list = ["episode", "ratings", "basics"];
-      list.map(item => {
+      list.map(async item => {
         if( res.find(x => x.name === item) )
-          db.collection(item).drop()
+          await db.collection(item).drop()
       })
     })
 
