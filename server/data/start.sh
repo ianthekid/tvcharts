@@ -53,9 +53,4 @@ wait
 echo "Deleted all source and chunk files now that we have a DB"
 rm -rf $dir
 
-## STEP 4: Open up API calls to access database
-node api.js &
-echo "all done. API started"
-
-## Leave running for API access
-sleep infinity
+echo "all done."

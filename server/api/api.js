@@ -1,5 +1,5 @@
 var express = require("express");
-var mongo = require('./mongo.js');
+var mongo = require('../mongo.js');
 var cors = require('cors');
 
 var app = express();
@@ -7,6 +7,10 @@ app.use(cors());
 app.listen(3000, () => {
  console.log("Server running on port 3000");
 });
+
+app.get('/api', function(req, res){
+  res.send("yeppers")
+})
 
 app.get('/api/count/:type', function(req, res){
   mongo(client => {

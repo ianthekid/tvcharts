@@ -1,4 +1,4 @@
-var mongo = require('./mongo.js');
+var mongo = require('../mongo.js');
 
 mongo(async client => {
 
