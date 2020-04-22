@@ -35,7 +35,9 @@ services:
   nginx:
     container_name: nginx
     image: nginx:mainline-alpine
-    build: ./nginx
+    build:
+      context: ./
+      dockerfile: ./nginx/Dockerfile
     restart: always
     ports:
       - "80:80"

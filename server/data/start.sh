@@ -36,6 +36,7 @@ echo "file chunks created"
 ## STEP 3: Setup database and insert from source data (as chunks)
 echo "Initializing mongoDB"
 node mongoInit.js &
+wait
 
 echo "import into mongodb"
 for file in $files
