@@ -30,7 +30,7 @@ function Show(props) {
   }, [props.match.params.tconst, handleShow]);
 
   return (
-    <div className="p-3">
+    <div className="px-2">
       <Row>
         <SearchForm />
       </Row>

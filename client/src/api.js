@@ -13,8 +13,8 @@ function show(tconst) {
 }
 
 function poster(tconst) {
-  return fetch(`${url}/post/${tconst}`)
-  .then(res => res.json())
+  return fetch(`${url}/poster/${tconst}`)
+  .then(res => res.text())
   .then(data => data);
 }
 

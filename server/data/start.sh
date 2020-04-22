@@ -27,7 +27,7 @@ do
   do
     start=$(( i*chunkGroup ))
     max=$(( start+chunkGroup ))
-    node --max-old-space-size=2048 chunks.js $file $chunkSize $start $max &
+    node chunks.js $file $chunkSize $start $max &
   done
 done
 wait

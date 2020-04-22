@@ -1,29 +1,32 @@
 var express = require("express");
 var mongo = require('./mongo.js');
-var cors = require('cors');
+//var cors = require('cors');
 var request = require('request');
 const dotenv = require('dotenv');
 dotenv.config();
 
 var app = express();
-app.use(cors());
+//app.use(cors());
 app.listen(3000, () => {
  console.log("Server running on port 3000");
 });
 
 app.get('/api', function(req, res){
-  res.send("yeeeesh")
+  res.send("What's up my nerdz?!?")
 })
 
 app.get('/api/poster/:tconst', function(req, res){
-  var url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API}&i=${tconst}`;
+  var url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API}&i=${req.params.tconst}`;
+  var placeholder = 'https://via.placeholder.com/300x450';
   request(url, function(error, response, body) {
     if(!error && response.statusCode == 200) {
       let data = JSON.parse(body);
       let img = data.Poster;
       //placeholder for empty/null results
-      let result = (img && img !== "N/A") ? img : 'https://via.placeholder.com/300x450';
+      let result = (img && img !== "N/A") ? img : placeholder;
       res.send(result)
+    } else {
+      res.send(placeholder)
     }
   });
 })
@@ -65,6 +68,13 @@ app.get('/api/show/:tconst', function(req, res){
         as: 'rating'
       }},
       { $unwind: "$rating" },
+      //get episodes for entire series
+      { $lookup: {
+          from: 'episode',
+          localField: 'tconst',
+          foreignField: 'parentTconst',
+          as: 'episodes'
+      }},
       { $project: {
           _id : 1,
           tconst : 1,
@@ -72,7 +82,8 @@ app.get('/api/show/:tconst', function(req, res){
           startYear: 1,
           endYear: 1,
           averageRating: "$rating.averageRating",
-          numVotes: "$rating.numVotes"
+          numVotes: "$rating.numVotes",
+          episodeCount: { $size: "$episodes" }
       }}
     ]).toArray().then(data => {
       var results = (data) ? data : 500;
@@ -93,31 +104,31 @@ app.get('/api/search/:query', function(req, res){
       $match: {
         $and: [{
           $text: {
-            $search : `"\"${query}\""`, 
+            $search: `"\"${query}\""`,
             $caseSensitive: false
           }},
           //limit query to only series titles
           {"titleType": "tvSeries"}
         ]}
-      }, {
-        //get rating for entire series
-        $lookup: {
+      },
+      //get episodes for entire series 
+      { $lookup: {
+          from: 'episode',
+          localField: 'tconst',
+          foreignField: 'parentTconst',
+          as: 'episodes'
+      }},
+      //get rating for entire series 
+      { $lookup: {
           from: 'ratings',
           localField: 'tconst',
           foreignField: 'tconst',
           as: 'rating'
-        }
-      }, { 
-        //sort by numVotes to show most popular shows first
-        $sort: {
-          "rating.numVotes" : -1
-        }
-      }, { 
-        $limit: 20
-      }, { 
-        $unwind: "$rating" 
-      }, { 
-        $project: {
+      }}, 
+      { $sort: { "rating.numVotes": -1 } }, 
+      { $limit: 32 }, 
+      { $unwind: "$rating" }, 
+      { $project: {
           _id : 1,
           tconst : 1,
           primaryTitle : 1,
@@ -125,9 +136,11 @@ app.get('/api/search/:query', function(req, res){
           endYear: 1,
           genres: 1,
           averageRating: "$rating.averageRating",
-          numVotes: "$rating.numVotes"
-        }
-      }
+          numVotes: "$rating.numVotes",
+          episodeCount: { $size: "$episodes" }
+      }},
+      //only output shows that have episodes
+      { $match: { "episodeCount": { $gt: 0 } } },
     ])
     .toArray().then(data => {
       let results = (data) ? {

@@ -1,4 +1,4 @@
-FROM node:13
+FROM node:alpine
 WORKDIR /api
 COPY ./package.json /api
 RUN npm install
