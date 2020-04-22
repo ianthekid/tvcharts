@@ -1,18 +1,22 @@
 version: '3'
 
 services:
-#  data:
-#    container_name: data
-#    image: data
-#    build: ./data
-#    networks:
-#      - app-network
-#    links:
-#      - "mongo"
+  data:
+    container_name: data
+    image: data
+    build:
+      context: ./
+      dockerfile: ./data/Dockerfile
+    networks:
+      - app-network
+    links:
+      - "mongo"
   api:
     container_name: api
     image: api
-    build: ./api
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile
     restart: always
     ports:
       - "3000:3000"
@@ -28,8 +32,6 @@ services:
      - "27017:27017"
     networks:
       - app-network
-    logging:
-      driver: none
   nginx:
     container_name: nginx
     image: nginx:mainline-alpine
