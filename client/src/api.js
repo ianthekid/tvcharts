@@ -13,14 +13,9 @@ function show(tconst) {
 }
 
 function poster(tconst) {
-  var url = `${process.env.REACT_APP_OMDB_URL}/?apikey=${process.env.REACT_APP_OMDB_KEY}&i=${tconst}`;
-  return fetch(url)
+  return fetch(`${url}/post/${tconst}`)
   .then(res => res.json())
-  .then(data => {
-    let img = data.Poster;
-    //placeholder for empty/null results
-    return (img && img !== "N/A") ? img : 'https://via.placeholder.com/300x450';
-  });
+  .then(data => data);
 }
 
 function episodes(tconst) {

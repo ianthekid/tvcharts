@@ -1,6 +1,9 @@
 var express = require("express");
 var mongo = require('./mongo.js');
 var cors = require('cors');
+var request = require('request');
+const dotenv = require('dotenv');
+dotenv.config();
 
 var app = express();
 app.use(cors());
@@ -10,6 +13,19 @@ app.listen(3000, () => {
 
 app.get('/api', function(req, res){
   res.send("yeeeesh")
+})
+
+app.get('/api/poster/:tconst', function(req, res){
+  var url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API}&i=${tconst}`;
+  request(url, function(error, response, body) {
+    if(!error && response.statusCode == 200) {
+      let data = JSON.parse(body);
+      let img = data.Poster;
+      //placeholder for empty/null results
+      let result = (img && img !== "N/A") ? img : 'https://via.placeholder.com/300x450';
+      res.send(result)
+    }
+  });
 })
 
 app.get('/api/count/:type', function(req, res){
