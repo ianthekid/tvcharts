@@ -5,9 +5,9 @@ import { SearchForm } from './';
 function Home() {
 
   return (
-    <Container>
-      <h1>TV Show Ratings</h1>
-      <h6>Graph of episode ratings of the entire series history</h6>
+    <Container className="vh-100 d-flex flex-column justify-content-center align-items-center">
+      <h1>TV Charts</h1>
+      <h6>Episode ratings for the entire run of series</h6>
       <SearchForm />
     </Container>
   );

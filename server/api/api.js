@@ -1,12 +1,12 @@
 var express = require("express");
 var mongo = require('./mongo.js');
-//var cors = require('cors');
+var cors = require('cors');
 var request = require('request');
 const dotenv = require('dotenv');
 dotenv.config();
 
 var app = express();
-//app.use(cors());
+app.use(cors());
 app.listen(3000, () => {
  console.log("Server running on port 3000");
 });

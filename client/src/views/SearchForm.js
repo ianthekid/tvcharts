@@ -18,7 +18,7 @@ function SearchForm() {
   }
 
   return (
-    <Form onSubmit={handleSearch}>
+    <Form onSubmit={handleSearch} className="mt-3">
       <Row>
         <Col xs={10}>
           <Form.Group controlId="showTitle">
