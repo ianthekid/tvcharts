@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Row, Col, Alert } from 'react-bootstrap';
-import { BestWorst, Seasons, ShowDetails, SearchForm } from './';
+import { Alert, Row, Col } from 'react-bootstrap';
+import { BestWorst, Loading, Seasons, ShowDetails, SearchForm } from './';
 import api from '../api';
 import pageTitle from '../pageTitle';
 
@@ -30,7 +30,7 @@ function Show(props) {
   }, [props.match.params.tconst, handleShow]);
 
   return (
-    <div className="px-2">
+    <div className="px-1">
       <Row>
         <SearchForm />
       </Row>
@@ -39,16 +39,17 @@ function Show(props) {
           <Alert variant="danger">Show Not Found</Alert>
         </Col>
       }
-      {isLoading && <div>Loading ...</div>}
+      {isLoading && <Loading />}
       {(!isLoading && !error) &&
         <Row>
           <Col lg={2} md={3} sm={4}>
             <ShowDetails show={show} />
             <BestWorst seasons={allSeasons} />
           </Col>
-          <Col lg={10} md={9} sm={8} id="ratings" className="pl-4" style={{transform: `scale(${scale}`}}>
+          <Col lg={10} md={9} sm={8} id="ratings" style={{transform: `scale(${scale}`}}>
             <Seasons
               tconst={show.tconst}
+              episodeCount={show.episodeCount}
               handleAllSeasons={setAllSeasons}
               handleScale={setScale}
               scale={scale}

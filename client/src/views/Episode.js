@@ -5,10 +5,10 @@ import ReactTooltip from 'react-tooltip'
 function Episode(props) {
 
   const [ep, setEp] = useState(props.episode);
-
+  
   useEffect(() => {
     setEp(props.episode)
-  }, [props]);
+  }, [ props.episode ]);
 
   return (
     <Col className={`rating-${Math.floor(ep.averageRating)} mb-1 d-flex justify-content-center align-items-center`}>

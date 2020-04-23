@@ -10,18 +10,18 @@ function List(props) {
   }, [props]);
 
   return (
-    <Col>
+    <Row>
       {list.map((ep, i) => (
-        <Row key={i}>
-          <Col xs={2}>{ep.averageRating}</Col>
-          <Col className="text-left">
+        <Col xs={12} key={i} className={`d-inline-flex flex-columns list-${Math.floor(ep.averageRating)}`}>
+          <div>{ep.averageRating.toFixed(1)}</div>
+          <span className="text-left">
             <a href={`https://www.imdb.com/title/${ep.tconst}/`} target="_blank" rel="noopener noreferrer">
               {ep.title}
             </a>
-          </Col>
-        </Row>
+          </span>
+        </Col>
       ))}
-    </Col>
+    </Row>
   );
 }
 

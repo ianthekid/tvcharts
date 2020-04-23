@@ -139,8 +139,13 @@ app.get('/api/search/:query', function(req, res){
           numVotes: "$rating.numVotes",
           episodeCount: { $size: "$episodes" }
       }},
-      //only output shows that have episodes
-      { $match: { "episodeCount": { $gt: 0 } } },
+      //only output shows that have episodes and over 500 votes
+      { $match: { 
+        $and: [
+          { "episodeCount": { $gt: 0 } },
+          { "numVotes": { $gt: 500 } }
+        ]
+      }},
     ])
     .toArray().then(data => {
       let results = (data) ? {

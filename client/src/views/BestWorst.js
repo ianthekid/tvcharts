@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { List } from './';
 
 function BestWorst(props) {
@@ -10,20 +10,17 @@ function BestWorst(props) {
   useEffect(() => {
     props.seasons.sort((a, b) => a.averageRating - b.averageRating);
     setBest( props.seasons.slice(-3).reverse() )
-    setworst( props.seasons.slice(0, 3) )
+    setworst( props.seasons.slice(0, 3).reverse() )
   }, [props]);
 
   return (
-    <div className="text-left mt-4 mb-5 ml-3">
-      <h6>Best Episodes</h6>
-      <Row>
-        {(best.length > 0) &&  <List episodes={best} />}
-      </Row>
-      <h6 className="mt-3">Worst Episodes</h6>
-      <Row>
-        {(worst.length > 0) && <List episodes={worst} />}
-      </Row>
-    </div>
+    <Col className="text-left mt-2 mb-4">
+      <Row><h6>Best Episodes</h6></Row>
+      {(best.length > 0) &&  <List episodes={best} />}
+
+      <Row><h6 className="mt-3">Worst Episodes</h6></Row>
+      {(worst.length > 0) && <List episodes={worst} />}
+    </Col>
   );
 }
 

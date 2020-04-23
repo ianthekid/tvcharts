@@ -41,17 +41,46 @@
   }
 }
 
+[class*='list-'] {
+  text-align: center;
+  margin: 0 0 0.25rem;
+  padding: 0.1rem;
+  line-height: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 0.9rem;
+  & div {
+    text-align: left;
+    width: 1.8rem;
+  }
+  & a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
 @for $i from 1 through 10 {
   $clr: map-get($ratings, 3);
   @if $i > 3 {
     $clr: map-get($ratings, $i);
   }
-  .rating-#{$i} {
-    background-color: $clr;
+  .rating-#{$i} { 
+    background-color: $clr; 
+  }
+  .list-#{$i} {
+    color: $clr;
+    & a { color: $clr }
   }
 }
 
+.list-10, .rating-10 {
+  text-shadow: 0 0 15px map-get($ratings, 10);
+}
 .rating-10 {
   box-shadow: 0 0 15px map-get($ratings, 10);
-  text-shadow: 0 0 15px map-get($ratings, 10);
+}
+
+.spinner-grow {
+  height: 6rem;
+  width: 6rem;
 }

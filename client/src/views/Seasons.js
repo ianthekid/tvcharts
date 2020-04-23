@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Episode } from './';
+import { Episode, Loading } from './';
 import { Row, Col } from 'react-bootstrap';
 import windowResize from '../windowResize';
 import api from '../api';
@@ -17,9 +17,9 @@ function Seasons(props) {
       handleAllSeasons(res.allEpisodes);
       handleScale(windowResize.scale('ratings'))
     })
-  }, []);
+  }, [ props.tconst ]);
 
-  const handleAllSeasons = useCallback((allSeasons) => {
+  const handleAllSeasons = useCallback(allSeasons => {
     props.handleAllSeasons(allSeasons)
   }, [])
 
@@ -36,13 +36,12 @@ function Seasons(props) {
     });
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [ props.tconst ])
-
+  }, [ props.tconst, handleScale, setShowtconst ])
 
   return (
     <Row>
       {isLoading ? (
-        <div>Loading ...</div>
+        <Loading message={`Loading ${props.episodeCount} episodes...`} />
       ) : (
         Object.keys(seasons).map((s,index) => (
           <Col xs={1} key={index} className="mr-1 p-0">

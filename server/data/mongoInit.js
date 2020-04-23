@@ -16,7 +16,7 @@ mongo(async client => {
 
       //init indexing
       await db.collection("episode").createIndex({parentTconst: 1})
-      await db.collection("ratings").createIndex({tconst: 1})
+      await db.collection("ratings").createIndex({tconst: 1, numVotes: -1})
       await db.collection("basics").createIndex({tconst: 1})
       await db.collection("basics").createIndex({"primaryTitle": "text"})
     })
