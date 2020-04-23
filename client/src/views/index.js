@@ -1,3 +1,4 @@
+import About from './About';
 import BestWorst from './BestWorst';
 import Episode from './Episode';
 import Header from './Header';
@@ -13,6 +14,7 @@ import Show from './Show';
 import ShowDetails from './ShowDetails';
 
 export { 
+  About,
   BestWorst,
   Episode,
   Header,

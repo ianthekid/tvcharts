@@ -13,6 +13,10 @@
   max-height: 28px;
 }
 
+#ian {
+  height: 240px
+}
+
 .btn-primary {
   color: map-get($theme-colors, "dark");
 }
@@ -39,7 +43,7 @@
   height: 2.5em;
   transform-origin: 0 0;
   transform: scale(1);
-  & a {
+& a {
     text-decoration: none;
     color: #fff;
     display: block;

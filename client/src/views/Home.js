@@ -9,7 +9,7 @@ function Home() {
     <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center">
       <Image id="logo" src={logo} fluid /> 
       <h1 className="text-primary">TV Charts</h1>
-      <h6>Episode ratings for entire series</h6>
+      <h6>Charts of TV shows ratings for an entire series</h6>
       <SearchForm />
     </Container>
   );
