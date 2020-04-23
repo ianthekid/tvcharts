@@ -18,10 +18,10 @@ function SearchForm() {
   }
 
   return (
-    <Form onSubmit={handleSearch} className="mt-3">
-      <Row>
+    <Form onSubmit={handleSearch}>
+      <Row className="d-flex justify-content-center align-items-center">
         <Col xs={10}>
-          <Form.Group controlId="showTitle">
+          <Form.Group controlId="showTitle" className="mb-0">
             <Form.Control 
               type="text" 
               onChange={handleChange}
@@ -32,8 +32,8 @@ function SearchForm() {
               placeholder="example: The Office" />
           </Form.Group>
         </Col>
-        <Col xs={2}>
-          <Button type="submit">Submit</Button>
+        <Col xs={2} className="text-left pl-0">
+          <Button type="submit">Go</Button>
         </Col>
       </Row>
     </Form>

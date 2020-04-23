@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { Home, Search, Show } from './views';
+import { Header, Home, Search, Show } from './views';
 import './styles/App.scss';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <Container fluid>
         <Router>
+          <Header />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/search/:query" component={Search} />

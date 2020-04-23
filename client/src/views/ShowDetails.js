@@ -24,7 +24,12 @@ function ShowDetails(props) {
       </Col>
       <Col xs={12}>
         <h4 className="mb-0">{data.primaryTitle}</h4>
-        <small>{data.startYear} - {(data.endYear === "\\N") ? '' : data.endYear}</small>
+        <small>
+          <a href={`https://www.imdb.com/title/${data.tconst}/`} target="_blank" rel="noopener noreferrer" className="mr-2">
+            IMDb
+          </a>
+          {data.startYear} - {(data.endYear === "\\N") ? '' : data.endYear}
+        </small>
       </Col>
       <Col xs={12}>
         <h4 className="mt-2">
@@ -32,9 +37,6 @@ function ShowDetails(props) {
           <small>
             ({(data.numVotes) && data.numVotes.toLocaleString()})
           </small>
-          <a href={`https://www.imdb.com/title/${data.tconst}/`} target="_blank" rel="noopener noreferrer" className="ml-2 small">
-            imdb
-          </a>
         </h4>
       </Col>
     </Row>

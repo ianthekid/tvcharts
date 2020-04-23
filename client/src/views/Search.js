@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Container, Row, Col } from 'react-bootstrap';
-import { Loading, SearchForm, SearchResults } from './';
+import { Loading, SearchResults } from './';
 import api from '../api';
 import pageTitle from '../pageTitle';
 
@@ -36,7 +36,6 @@ function Search(props) {
 
   return (
     <Container>
-      <SearchForm />
       {isLoading && 
         <Loading message={`Searching for '${query}'...`} />
       }

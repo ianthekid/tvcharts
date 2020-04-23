@@ -1,5 +1,6 @@
 import BestWorst from './BestWorst';
 import Episode from './Episode';
+import Header from './Header';
 import Home from './Home';
 import List from './List';
 import Loading from './Loading';
@@ -14,6 +15,7 @@ import ShowDetails from './ShowDetails';
 export { 
   BestWorst,
   Episode,
+  Header,
   Home,
   List,
   Loading,

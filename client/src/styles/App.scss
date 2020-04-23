@@ -2,11 +2,19 @@
 @import 'bootstrap/scss/bootstrap.scss';
 
 .App {
-  background-color: #1d2025;
+  background-color: map-get($theme-colors, "dark");
   min-height: 100vh;
   display: flex;
   color: white;
   text-align: center;
+}
+
+#logo {
+  max-height: 28px;
+}
+
+.btn-primary {
+  color: map-get($theme-colors, "dark");
 }
 
 #ratings {

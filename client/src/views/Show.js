@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Row, Col } from 'react-bootstrap';
-import { BestWorst, Loading, Seasons, ShowDetails, SearchForm } from './';
+import { BestWorst, Loading, Seasons, ShowDetails } from './';
 import api from '../api';
 import pageTitle from '../pageTitle';
 
@@ -31,9 +31,6 @@ function Show(props) {
 
   return (
     <div className="px-1">
-      <Row>
-        <SearchForm />
-      </Row>
       {error && 
         <Col xs={3}>
           <Alert variant="danger">Show Not Found</Alert>

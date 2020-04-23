@@ -14,7 +14,7 @@ function SearchResults(props) {
   return (
     <Row>
       {list.map((s, i) => (
-        <Col xs={6} sm={4} md={3} key={i} className='text-center p-3'>
+        <Col xs={6} sm={4} md={3} lg={2} key={i} className='text-center p-3'>
           <ShowPoster 
             tconst={s.tconst}
             target="_self"
