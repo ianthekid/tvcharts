@@ -9,7 +9,7 @@ var app = express();
 app.use(cors());
 //auth with API_KEY in .env
 app.use(function(req, res, next) {
-  let key = req.headers.api_key;
+  let key = req.headers['x-api-key'];
   if(key && key === process.env.API_KEY)
     return next();
   else
