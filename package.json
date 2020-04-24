@@ -2,10 +2,6 @@
   "name": "tvcharts",
   "version": "1.0.0",
   "description": "Charts of TV Show Ratings for Entire Series",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Ian Ray",
   "license": "ISC"
 }

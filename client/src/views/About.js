@@ -27,8 +27,8 @@ function About() {
           <li>Nginx</li>
           <li>Docker</li>
         </ul>
-        <p>I documented the technical specs and my learning experiences in <a href="#">this blog post</a> for this project.</p>
-        <p>Please review the code on <a href="#">GitHub repo</a> or email me directly <a href="mailto:ian@ianray.com">ian@ianray.com</a></p>
+        <p>I documented the technical specs and my learning experiences in <a href="https://medium.com/@ianthekid/creating-a-web-application-to-display-charts-of-tv-shows-ratings-for-every-episode-9b9d9b393b90">this blog post</a> for this project.</p>
+        <p>Please review the code on <a href="https://github.com/ianthekid/tvcharts">GitHub repo</a> or email me directly <a href="mailto:ian@ianray.com">ian@ianray.com</a></p>
       </Col>
     </Container>
   );
