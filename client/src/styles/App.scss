@@ -13,10 +13,6 @@
   max-height: 28px;
 }
 
-#ian {
-  height: 240px
-}
-
 .btn-primary {
   color: map-get($theme-colors, "dark");
 }
@@ -95,4 +91,50 @@
 .spinner-grow {
   height: 6rem;
   width: 6rem;
+}
+
+
+#examples {
+  height: 36px;
+  overflow: hidden;
+  margin: 0 auto;
+  font-size: 1.2em;
+  .slides {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    animation: slide-animation 15s infinite;
+  }
+  & .slide {
+    height: 36px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+}
+
+/* [ANIMATION] */
+@keyframes slide-animation {
+  0% { 
+    opacity: 0;
+    bottom: 0;
+  }
+  11% {
+    opacity: 1;
+    bottom: 0; 
+  }
+  22% { bottom: 100%; }
+  33% { bottom: 100%; }
+  44% { bottom: 200%; }
+  55% { bottom: 200%; }
+  66% { bottom: 300%; }
+  77% { bottom: 300%; }
+  88% {
+    opacity: 1;
+    bottom: 400%; 
+  }
+  100% {
+    opacity: 0;
+    bottom: 400%;
+  }
 }

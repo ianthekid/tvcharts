@@ -28,8 +28,8 @@ function Header() {
         <SearchForm />
       </Col>
       {spacer}
-      <Col xs={2} className="text-right">
-        <Link to="/about-ian-ray">
+      <Col xs={2} className="text-right pr-0 pr-sm-3">
+        <Link to="/about-ian-ray" className="small">
           hire me
         </Link>
       </Col>

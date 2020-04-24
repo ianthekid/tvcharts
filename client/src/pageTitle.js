@@ -1,5 +1,6 @@
 const titles = {
-  'home': 'TV Charts for Shows Over All Time',
+  'home': 'Charts of TV Show Ratings for Entire Series',
+  'about': 'Ian Ray - Developer for Hire',
   'show': 'TV Chart for ',
   'search': 'Search results for: '
 }

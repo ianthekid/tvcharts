@@ -1,25 +1,30 @@
 const url = process.env.REACT_APP_API_URL;
+const headers = {  
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-api-key': process.env.REACT_APP_API_KEY
+};
 
 function search(title) {
-  return fetch(`${url}/search/${encodeURIComponent(title)}`)
+  return fetch(`${url}/search/${encodeURIComponent(title)}`, {headers})
   .then(res => res.json())
   .then(data => data);
 }
 
 function show(tconst) {
-  return fetch(`${url}/show/${tconst}`)
+  return fetch(`${url}/show/${tconst}`, {headers})
   .then(res => res.json())
   .then(data => data[0]);
 }
 
 function poster(tconst) {
-  return fetch(`${url}/poster/${tconst}`)
+  return fetch(`${url}/poster/${tconst}`, {headers})
   .then(res => res.text())
   .then(data => data);
 }
 
 function episodes(tconst) {
-  return fetch(`${url}/seasons/${tconst}`)
+  return fetch(`${url}/seasons/${tconst}`, {headers})
   .then(res => res.json())
   .then(function(response) {
     //Data returns array of Objs unsorted. Loop through items and group into ordered Obj for each season
