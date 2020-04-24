@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Col, Row, Image } from 'react-bootstrap';
 import { SearchForm } from './';
-import logo from '../logo.svg'
+import logo from '../img/logo.svg'
 
 function Header() {
 

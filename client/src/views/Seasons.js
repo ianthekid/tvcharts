@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Episode, Loading } from './';
 import { Row, Col } from 'react-bootstrap';
-import windowResize from '../windowResize';
-import api from '../api';
+import windowResize from '../lib/windowResize';
+import api from '../lib/api';
 
 function Seasons(props) {
 

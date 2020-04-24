@@ -1,7 +1,7 @@
 {
-  "name": "tv-ratings-chart",
+  "name": "tvcharts",
   "version": "1.0.0",
-  "description": "TV Ratings visualized over time",
+  "description": "Charts of TV Show Ratings for Entire Series",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

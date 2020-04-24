@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Col, Image } from 'react-bootstrap';
-import pageTitle from '../pageTitle';
+import pageTitle from '../lib/pageTitle';
 import ian from '../img/ian-ray.webp';
 import jpg from '../img/ian-ray.jpg';
 

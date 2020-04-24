@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Image } from 'react-bootstrap';
 import { SearchForm } from './';
-import pageTitle from '../pageTitle';
-import logo from '../logo.svg'
+import pageTitle from '../lib/pageTitle';
+import logo from '../img/logo.svg'
 
 function Home() {
 
@@ -15,7 +15,7 @@ function Home() {
     {tconst: "tt0944947", title: "Game of Thrones"},
     {tconst: "tt0472954", title: "It's Always Sunny in Philadelphia"},
     {tconst: "tt0903747", title: "Breaking Bad"},
-    {tconst: "Simpsons", title: "The Simpsons"}
+    {tconst: "tt0096697", title: "The Simpsons"}
   ]
 
   return (
@@ -33,7 +33,9 @@ function Home() {
           ))}
         </div>
       </div>
-      <p className="mt-2">created by <Link to="/about-ian-ray">ian ray</Link></p>
+      <p className="mt-2 text-muted">
+        created by <Link to="/about-ian-ray" className="text-warning">ian ray</Link>
+      </p>
     </Container>
   );
 }

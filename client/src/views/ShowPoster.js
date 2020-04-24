@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
-import api from '../api'
+import api from '../lib/api'
 
 function ShowPoster(props) {
 
@@ -11,7 +11,7 @@ function ShowPoster(props) {
   }, [props.tconst]);
 
   return (
-    <a href={props.link} target={props.target}>
+    <a href={props.link} target={props.target} className="poster">
       <Image fluid src={poster} className="p-2" />
     </a>    
   );

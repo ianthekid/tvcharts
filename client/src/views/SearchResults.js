@@ -12,16 +12,16 @@ function SearchResults(props) {
   }, [props.shows]);
 
   return (
-    <Row>
+    <Row id="results">
       {list.map((s, i) => (
-        <Col xs={6} sm={4} md={3} lg={2} key={i} className='text-center p-3'>
+        <Col xs={6} sm={4} md={3} key={i} className='text-center p-1 my-3'>
           <ShowPoster 
             tconst={s.tconst}
             target="_self"
             link={`/show/${s.tconst}`}
           />
           <Link to={`/show/${s.tconst}`}>
-            <h5 className='mt-2 mb-0'>
+            <h5 className='mt-1 mb-0'>
               {s.primaryTitle}
             </h5>
           </Link>

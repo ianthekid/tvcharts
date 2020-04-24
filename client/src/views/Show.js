@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Row, Col } from 'react-bootstrap';
 import { BestWorst, Loading, Seasons, ShowDetails } from './';
-import api from '../api';
-import pageTitle from '../pageTitle';
+import api from '../lib/api';
+import pageTitle from '../lib/pageTitle';
 
 function Show(props) {
   const [show, setShow] = useState({});
