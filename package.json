@@ -2,6 +2,10 @@
   "name": "tvcharts",
   "version": "1.0.0",
   "description": "Charts of TV Show Ratings for Entire Series",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ianthekid/tvcharts.git"
+  },
   "author": "Ian Ray",
   "license": "ISC"
 }
