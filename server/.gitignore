@@ -3,4 +3,4 @@ package-lock.json
 config.json
 files/
 frontend/*
-!frontend/.gitignore
+!frontend/default.html

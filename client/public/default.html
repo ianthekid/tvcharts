@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>TV Charts</title>
+  <meta name="description" content="TV Charts start page">
+  <meta name="author" content="Ian Ray">
+
+</head>
+
+<body>
+  Build frontend/ before deploying service:nginx
+  <code>
+    cd client/
+    yarn install
+    yarn build
+  </code>
+  After build is complete:
+  <code>
+    cd server/
+    docker-compose up -d
+  </code>
+</body>
+</html>
