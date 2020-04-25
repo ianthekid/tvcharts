@@ -1,6 +1,6 @@
 {
   "name": "tv-ratings-chart-client",
-  "homepage": "http://tvcharts.ianray.com",
+  "homepage": "/",
   "version": "1.0.3",
   "private": true,
   "dependencies": {
