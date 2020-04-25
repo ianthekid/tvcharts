@@ -2,6 +2,8 @@
 
 TVCharts is a simple frontend / backend application with an API and multi-container deployment. It ingests raw data from [IMDb datasets](https://www.imdb.com/interfaces/) into a document store, then allows users to search and display results as charts of episode ratings over the entire run of a TV series.
 
+![](https://raw.githubusercontent.com/ianthekid/tvcharts/master/client/preview.webp)
+
 ## Tech Stack
 
 * React
