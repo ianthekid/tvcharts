@@ -67,6 +67,27 @@ $ docker exec -it nginx ./certbot.sh
 
 If you have letsencrypt certs already generated, copy them to `server/nginx/letsencrypt`. It will check this directory before generating new ones.
 
+#### Optional: CDN - AWS S3 + Cloudfront
+
+Use AWS S3 + Cloudfront to host the static frontend assets. You will need to have an AWS account that can generate access key + secret, an S3 Bucket, and a CloudFront distribution that maps to a Bucket folder. Once you have those created, plug them into your `.env` variables
+
+```
+...
+AWS_KEY=
+AWS_SECRET=
+S3BUCKET=
+S3DIR=
+CLOUDFRONT=
+```
+
+Then run the bash script:
+
+```shell
+$ docker exec -it nginx ./aws.sh
+```
+
+To un-do this, you can restart the `nginx` container to re-copy the latest `frontend` build: `docker restart nginx`
+
 ## Updating Database
 
 Since we rely on IMDb datasets as our source of information, we can just drop the entire database and re-create it every time.
