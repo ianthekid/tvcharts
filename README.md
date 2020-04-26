@@ -1,4 +1,4 @@
-# [TVCharts](https://tvcharts.ianray.com/)
+# [TVCharts](https://tvchart.ianray.com/)
 
 TVCharts is a simple frontend / backend application with an API and multi-container deployment. It ingests raw data from [IMDb datasets](https://www.imdb.com/interfaces/) into a document store, then allows users to search and display results as charts of episode ratings over the entire run of a TV series.
 
@@ -12,7 +12,7 @@ TVCharts is a simple frontend / backend application with an API and multi-contai
 * Nginx / letsencrypt
 * Docker
 
-See a working example at [tvcharts.ianray.com](https://tvcharts.ianray.com/)
+See a working example at [tvchart.ianray.com](https://tvchart.ianray.com/)
 
 ## Requirements
 
@@ -55,6 +55,17 @@ You can start testing while data is still loading in, but all of the episode dat
 
 If you can use a VPS like EC2, DigitalOcean, etc. then just choose an option with 3+ vCPUs and at least 2GB memory. I used 4CPUs/2GB and it completely loads up in about 5mins.
 
+#### Optional: Generate SSL Cert
+
+Also included in the `nginx` container is letsencrypt and a config file (`ssl.conf`) for using SSL. To enable this, you need to set the `.env` variables `BUILD=production` and `DOMAIN` (which can be anything **except** `localhost`)
+
+Then run the bash script:
+
+```shell
+$ docker exec -it nginx ./certbot.sh
+```
+
+If you have letsencrypt certs already generated, copy them to `server/nginx/letsencrypt`. It will check this directory before generating new ones.
 
 ## Updating Database
 
@@ -66,7 +77,6 @@ $ docker restart data
 ```
 
 Alternatively, you can also use `docker-compose up -d data`
-
 
 ## Author
 

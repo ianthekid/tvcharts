@@ -1,5 +1,5 @@
 {
-  "name": "imdb-Data",
+  "name": "tvcharts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.5",
-    "request": "^2.88.2"
+    "request": "latest"
   }
 }

@@ -1,6 +1,6 @@
 FROM nginx
 RUN apt-get update
-RUN apt install -y certbot python-certbot-nginx
+RUN apt install -y certbot
 
 # config domain settings
 WORKDIR /nginx
@@ -13,7 +13,3 @@ RUN /nginx/config.sh
 # frontend assets
 RUN mkdir -p /var/www/html
 COPY ./frontend/. /var/www/html
-
-# only runs if .env[BUILD] == production
-#CMD ["/nginx/certbot.sh"]
-CMD /nginx/certbot.sh

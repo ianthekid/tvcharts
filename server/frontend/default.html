@@ -11,22 +11,16 @@
 </head>
 
 <body>
-  <h4>Build frontend before deploying</h4>
-  <p>
-    <code>
-      cd client/<br/>
-      yarn install<br/>
-      yarn build<br/>
-    </code>
-  </p>
-
-  <h4>After client build is complete:</h4>
-  <p>
-    <code>
-      cd server/<br/>
-      docker-compose build<br/>
-      docker-compose up -d<br/>
-    </code>
-  </p>
+  Build frontend/ before deploying service:nginx
+  <code>
+    cd client/
+    yarn install
+    yarn build
+  </code>
+  After build is complete:
+  <code>
+    cd server/
+    docker-compose up -d
+  </code>
 </body>
 </html>
