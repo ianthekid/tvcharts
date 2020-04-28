@@ -12,7 +12,7 @@ function ShowDetails(props) {
 
   return (
     <Row className="text-left">
-      <Col xs={6} sm={10}>
+      <Col xs={10}>
         {data.tconst &&
           <ShowPoster 
             tconst={data.tconst}

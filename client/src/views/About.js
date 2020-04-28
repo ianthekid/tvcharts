@@ -22,13 +22,14 @@ function About() {
         <strong>Built With:</strong>
         <ul>
           <li>React</li>
-          <li>NodeJS</li>
+          <li>NodeJS / Express</li>
           <li>MongoDB</li>
-          <li>Nginx</li>
+          <li>Nginx / letsencrypt</li>
           <li>Docker</li>
+          <li>AWS CDN (S3 + CloudFront)</li>
         </ul>
-        <p>I documented the technical specs and my learning experiences in <a href="https://medium.com/@ianthekid/creating-a-web-application-to-display-charts-of-tv-shows-ratings-for-every-episode-9b9d9b393b90">this blog post</a> for this project.</p>
-        <p>Please review the code on <a href="https://github.com/ianthekid/tvcharts">GitHub repo</a> or email me directly <a href="mailto:ian@ianray.com">ian@ianray.com</a></p>
+        <p>I documented the technical specs and my learning experiences in <a href="https://medium.com/@ianthekid/creating-a-web-application-to-display-charts-of-tv-shows-ratings-for-every-episode-9b9d9b393b90">this blog post</a>.</p>
+        <p>Please review the code on <a href="https://github.com/ianthekid/tvcharts">GitHub</a> or email me directly <a href="mailto:ian@ianray.com">ian@ianray.com</a></p>
       </Col>
     </Container>
   );

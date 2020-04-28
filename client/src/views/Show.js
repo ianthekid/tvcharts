@@ -41,8 +41,10 @@ function Show(props) {
       {(!isLoading && !error) &&
         <Row>
           <Col lg={2} md={3} sm={4}>
-            <ShowDetails show={show} />
-            <BestWorst seasons={allSeasons} />
+            <Row className="mb-4">
+              <Col xs={6} sm={12}><ShowDetails show={show} /></Col>
+              <Col xs={6} sm={12}><BestWorst seasons={allSeasons} /></Col>
+            </Row>
           </Col>
           <Col lg={10} md={9} sm={8} id="ratings" style={{transform: `scale(${scale}`}}>
             <Seasons

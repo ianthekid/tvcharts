@@ -8,6 +8,7 @@ function Seasons(props) {
 
   const [seasons, setSeasons] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const [maxRows, setMaxRows] = useState(1);
 
   const setShowtconst = useCallback((tconst) => {
     api.episodes(tconst)
@@ -15,6 +16,10 @@ function Seasons(props) {
       setSeasons(res.seasons);
       setLoading(false);
       handleAllSeasons(res.allEpisodes);
+      //find highest episode number for Y-Axis 'episodeRows'
+      let max = res.allEpisodes.reduce((max, p) => p.episodeNumber > max ? p.episodeNumber : max, res.allEpisodes[0].episodeNumber);
+      setMaxRows(max);
+      //resize window if chart is wider than viewport
       handleScale(windowResize.scale('ratings'))
     })
   }, [ props.tconst ]);
@@ -38,8 +43,20 @@ function Seasons(props) {
     return () => window.removeEventListener('resize', handleResize);
   }, [ props.tconst, handleScale, setShowtconst ])
 
+  //Episode row count as first column
+  var episodeRows = []
+  for (var i=1; i<=maxRows; i++) {
+    episodeRows.push(<Col key={i} className="episodeRows mb-1 d-flex justify-content-center align-items-center">{i}</Col>)
+  }
+
   return (
     <Row>
+      {!isLoading && (
+        <Col xs={1} className="mx-0 p-0" style={{maxWidth: '3rem'}}>
+          <strong>&nbsp;</strong>
+          {episodeRows}
+        </Col>
+      )}
       {isLoading ? (
         <Loading message={`Loading ${props.episodeCount} episodes...`} />
       ) : (

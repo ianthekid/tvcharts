@@ -12,7 +12,7 @@ function ShowPoster(props) {
 
   return (
     <a href={props.link} target={props.target} className="poster">
-      <Image fluid src={poster} className="p-2" />
+      <Image fluid src={poster} className="p-1" />
     </a>    
   );
 }

@@ -11,6 +11,7 @@ TVCharts is a simple frontend / backend application with an API and multi-contai
 * MongoDB
 * Nginx / letsencrypt
 * Docker
+* AWS CDN (S3 + CloudFront)
 
 See a working example at [tvchart.ianray.com](https://tvchart.ianray.com/)
 
@@ -86,7 +87,7 @@ Then run the bash script:
 $ docker exec -it nginx ./aws.sh
 ```
 
-To un-do this, you can restart the `nginx` container to re-copy the latest `frontend` build: `docker restart nginx`
+To un-do this, you can change the `BUILD` .env variable to `development` and re-build/deploy using docker. Or simply re-deploy the `nginx` container to use the latest `frontend` build: `docker-compose up -d nginx`
 
 ## Updating Database
 

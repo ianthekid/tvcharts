@@ -58,6 +58,11 @@ code {
       flex: 0 0 3.25em;
       max-width: 3.25em;
       display: inline-block;
+      & strong {
+        font-size: 0.5em;
+        margin-bottom: 0.8em;
+        display: block;
+      }
     }
   }
 }
@@ -69,7 +74,7 @@ code {
   height: 2.5em;
   transform-origin: 0 0;
   transform: scale(1);
-& a {
+  & a {
     text-decoration: none;
     color: #fff;
     display: block;
@@ -116,6 +121,13 @@ code {
 }
 .rating-10 {
   box-shadow: 0 0 15px map-get($ratings, 10);
+}
+
+.episodeRows {
+  height: 1em;
+  font-size: 0.5em;
+  font-weight: bold;
+  padding: 2.5em 0;
 }
 
 #examples {
