@@ -108,7 +108,7 @@ app.get('/api/search/:query', function(req, res){
     const db = client.db('tvratings');
     const basics = db.collection('basics');
     var query = decodeURIComponent(req.params.query);
-  
+
     basics.aggregate([{
       $match: {
         $and: [{
@@ -120,6 +120,7 @@ app.get('/api/search/:query', function(req, res){
           {"titleType": "tvSeries"}
         ]}
       },
+      { $sort: { score: { $meta: "textScore" } } },
       //get episodes for entire series 
       { $lookup: {
           from: 'episode',
@@ -134,7 +135,6 @@ app.get('/api/search/:query', function(req, res){
           foreignField: 'tconst',
           as: 'rating'
       }}, 
-      { $sort: { "rating.numVotes": -1 } }, 
       { $limit: 32 }, 
       { $unwind: "$rating" }, 
       { $project: {
