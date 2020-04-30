@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Row, Col } from 'react-bootstrap';
-import { BestWorst, Loading, Seasons, ShowDetails } from './';
+import { BestWorst, ColorBlind, Loading, Seasons, ShowDetails } from './';
 import api from '../lib/api';
 import pageTitle from '../lib/pageTitle';
 
@@ -10,6 +10,9 @@ function Show(props) {
   const [error, setError] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [scale, setScale] = useState(1);
+  const [colorScheme, setScheme] = useState('');
+
+  const handleColorBlind = (status) => setScheme(status ?  'cbFriendly' : '');
 
   const handleShow = useCallback((tconst) => {
     api.show(tconst).then(data => {
@@ -31,7 +34,7 @@ function Show(props) {
 
 
   return (
-    <div className="px-1">
+    <div className={`px-1 ${colorScheme}`}>
       {error && 
         <Col xs={3}>
           <Alert variant="danger">Show Not Found</Alert>
@@ -39,6 +42,8 @@ function Show(props) {
       }
       {isLoading && <Loading />}
       {(!isLoading && !error) &&
+        <>
+        <ColorBlind status={handleColorBlind} />
         <Row>
           <Col lg={2} md={3} sm={4}>
             <Row className="mb-4">
@@ -56,6 +61,7 @@ function Show(props) {
             />
           </Col>
         </Row>
+        </>
       }
     </div>
   );

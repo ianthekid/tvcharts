@@ -16,7 +16,7 @@ function Header() {
   const spacer = <Col md={1} lg={2} className="d-none d-sm-none d-md-block"></Col>;
 
   const header = (path !== "/") && (
-    <Row className="bg-light d-flex align-items-center py-2 mb-2">
+    <Row className="bg-light d-flex align-items-center py-2 mb-1">
       <Col xs={2} className="text-left">
         <Link to="/" className="d-flex">
           <Image id="logo" src={logo} fluid />

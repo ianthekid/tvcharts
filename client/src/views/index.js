@@ -1,5 +1,6 @@
 import About from './About';
 import BestWorst from './BestWorst';
+import ColorBlind from './ColorBlind';
 import Episode from './Episode';
 import Header from './Header';
 import Home from './Home';
@@ -16,6 +17,7 @@ import ShowDetails from './ShowDetails';
 export { 
   About,
   BestWorst,
+  ColorBlind,
   Episode,
   Header,
   Home,

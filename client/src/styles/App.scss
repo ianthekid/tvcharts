@@ -33,6 +33,14 @@ code {
   width: 6rem;
 }
 
+.cbToggle {
+  margin: 0 0.3rem;
+  .btn {
+    font-size: 0.7rem;
+    padding: 0 0.25rem;
+  }
+} 
+
 #results {
   [class*='col-']:hover {
     background-color: map-get($theme-colors, "light");
@@ -102,6 +110,9 @@ code {
   }
 }
 
+/**
+ * Episode Ratings Colors
+ */
 @for $i from 1 through 10 {
   $clr: map-get($ratings, 3);
   @if $i > 3 {
@@ -115,13 +126,37 @@ code {
     & a { color: $clr }
   }
 }
-
 .list-10, .rating-10 {
   text-shadow: 0 0 15px map-get($ratings, 10);
 }
 .rating-10 {
   box-shadow: 0 0 15px map-get($ratings, 10);
 }
+
+/**
+ * Color-Blind "friendly" Episode Ratings Colors
+ */
+ @for $i from 1 through 10 {
+  $clr: map-get($cbFriendly, 3);
+  @if $i > 3 {
+    $clr: map-get($cbFriendly, $i);
+  }
+  .cbFriendly .rating-#{$i} { 
+    background-color: $clr; 
+  }
+  .cbFriendly .list-#{$i} {
+    color: $clr;
+    & a { color: $clr }
+  }
+}
+.cbFriendly .list-10, .cbFriendly .rating-10 {
+  text-shadow: 0 0 15px map-get($ratings, 10);
+}
+.cbFriendly .rating-10 {
+  box-shadow: 0 0 15px map-get($ratings, 10);
+}
+
+
 
 .episodeRows {
   height: 1em;
