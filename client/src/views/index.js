@@ -7,6 +7,7 @@ import Home from './Home';
 import List from './List';
 import Loading from './Loading';
 import Search from './Search';
+import SearchAutoComplete from './SearchAutoComplete';
 import SearchForm from './SearchForm';
 import ShowPoster from './ShowPoster';
 import SearchResults from './SearchResults';
@@ -24,6 +25,7 @@ export {
   List,
   Loading,
   Search,
+  SearchAutoComplete,
   SearchForm,
   ShowPoster,
   SearchResults,

@@ -1,0 +1,100 @@
+#ratings {
+  font-size: calc(10px + 1.2vmin);
+  transform-origin: 0 0;
+  & > .row {
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    & > .col-1 {
+      float: none;
+      flex: 0 0 3.25em;
+      max-width: 3.25em;
+      display: inline-block;
+      & strong {
+        font-size: 0.5em;
+        margin-bottom: 0.8em;
+        display: block;
+      }
+    }
+  }
+}
+
+[class*='rating'] {
+  border: 1px solid white;
+  text-align: center;
+  position: relative;
+  height: 2.5em;
+  transform-origin: 0 0;
+  transform: scale(1);
+  & a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    position: absolute;
+    width: 100%;
+    line-height: 2.5em;
+  }
+}
+
+[class*='list-'] {
+  text-align: center;
+  margin: 0 0 0.25rem;
+  padding: 0.1rem;
+  line-height: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 0.9rem;
+  & div {
+    text-align: left;
+    padding-right: 0.5rem;
+  }
+  & a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+/**
+ * Episode Ratings Colors
+ */
+@for $i from 1 through 10 {
+  $clr: map-get($ratings, 3);
+  @if $i > 3 {
+    $clr: map-get($ratings, $i);
+  }
+  .rating-#{$i} { 
+    background-color: $clr; 
+  }
+  .list-#{$i} {
+    color: $clr;
+    & a { color: $clr }
+  }
+}
+.list-10, .rating-10 {
+  text-shadow: 0 0 15px map-get($ratings, 10);
+}
+.rating-10 {
+  box-shadow: 0 0 15px map-get($ratings, 10);
+}
+
+/**
+ * Color-Blind "friendly" Episode Ratings Colors
+ */
+ @for $i from 1 through 10 {
+  $clr: map-get($cbFriendly, 3);
+  @if $i > 3 {
+    $clr: map-get($cbFriendly, $i);
+  }
+  .cbFriendly .rating-#{$i} { 
+    background-color: $clr; 
+  }
+  .cbFriendly .list-#{$i} {
+    color: $clr;
+    & a { color: $clr }
+  }
+}
+.cbFriendly .list-10, .cbFriendly .rating-10 {
+  text-shadow: 0 0 15px map-get($ratings, 10);
+}
+.cbFriendly .rating-10 {
+  box-shadow: 0 0 15px map-get($ratings, 10);
+}

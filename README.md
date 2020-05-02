@@ -1,4 +1,4 @@
-# [TVCharts](https://tvchart.ianray.com/)
+# [TVCharts](https://tvcharts.ianray.com/)
 
 TVCharts is a simple frontend / backend application with an API and multi-container deployment. It ingests raw data from [IMDb datasets](https://www.imdb.com/interfaces/) into a document store, then allows users to search and display results as charts of episode ratings over the entire run of a TV series.
 
@@ -13,7 +13,7 @@ TVCharts is a simple frontend / backend application with an API and multi-contai
 * Docker
 * AWS CDN (S3 + CloudFront)
 
-See a working example at [tvchart.ianray.com](https://tvchart.ianray.com/)
+See a working example at [tvcharts.ianray.com](https://tvcharts.ianray.com/)
 
 ## Requirements
 
@@ -106,3 +106,8 @@ I built TVCharts as a way of displaying my technical abilities to companies look
 
 * [Ian Ray](https://ianray.com/)
 * [LinkedIn](https://www.linkedin.com/in/ianrray/)
+
+## Credits
+
+ * An awesome Python version which inspired me was developed by [thepiratex](https://github.com/thepiratex) can be found [here](https://dataiszen.com/app/tvshow) with the full [code here](https://github.com/thepiratex/tvshow)
+ * The original concepts come from [/r/dataisbeautiful](https://www.reddit.com/r/dataisbeautiful/), with original done by user [/u/Hbenne](https://www.reddit.com/user/Hbenne)

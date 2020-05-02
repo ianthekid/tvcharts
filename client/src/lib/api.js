@@ -7,7 +7,9 @@ const headers = {
 function search(title) {
   return fetch(`/api/search/${encodeURIComponent(title)}`, {headers})
   .then(res => res.json())
-  .then(data => data);
+  .then(data => {
+    return (data.response === true) ? data.results : false;
+  });
 }
 
 function show(tconst) {

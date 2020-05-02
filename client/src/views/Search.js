@@ -19,11 +19,11 @@ function Search(props) {
     setResults([])
 
     api.search(q).then(res => {
-      if(res.response === false) {
+      if(res === false) {
         setError(true)
       } else {
         setError(false)
-        setResults(res.results)
+        setResults(res)
         pageTitle('search', q)
       }
       setLoading(false);

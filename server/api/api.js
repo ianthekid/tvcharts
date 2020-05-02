@@ -102,22 +102,19 @@ app.get('/api/show/:tconst', function(req, res){
   });
 })
 
-
 app.get('/api/search/:query', function(req, res){
   mongo(client => {
     const db = client.db('tvratings');
     const basics = db.collection('basics');
     var query = decodeURIComponent(req.params.query);
 
-    basics.aggregate([{
-      $match: {
-        $and: [{
-          $text: {
-            $search: `"\"${query}\""`,
-            $caseSensitive: false
-          }},
-          //limit query to only series titles
-          {"titleType": "tvSeries"}
+    basics.aggregate([
+      { $match: 
+        { $and: [
+          {'titleType': 'tvSeries'},
+          { $text: {
+            $search: query
+          }}
         ]}
       },
       { $sort: { score: { $meta: "textScore" } } },
@@ -134,8 +131,9 @@ app.get('/api/search/:query', function(req, res){
           localField: 'tconst',
           foreignField: 'tconst',
           as: 'rating'
-      }}, 
-      { $limit: 32 }, 
+      }},
+      //{ $sort: { "rating.numVotes": -1 } }, 
+      //{ $limit: 100 }, 
       { $unwind: "$rating" }, 
       { $project: {
           _id : 1,
@@ -152,7 +150,8 @@ app.get('/api/search/:query', function(req, res){
       { $match: { 
         $and: [
           { "episodeCount": { $gt: 0 } },
-          { "numVotes": { $gt: 500 } }
+          { "numVotes": { $gt: 500 } },
+          { "primaryTitle": new RegExp(query+'.*', 'i') }
         ]
       }},
     ])
