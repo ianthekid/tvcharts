@@ -10,9 +10,9 @@ function Loading(props) {
   }, [ props.message ]);
 
   return (
-    <Col className="vh-100 d-flex flex-column justify-content-center align-items-center text-primary">
-      <Spinner animation="grow" variant="primary" />
-      <h2 className="mt-2">
+    <Col className="vh-100 d-flex flex-rows justify-content-center align-items-start text-primary">
+      <Spinner animation="border" variant="primary" />
+      <h2 className="ml-2">
         {message}
       </h2>
     </Col>

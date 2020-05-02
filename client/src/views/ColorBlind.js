@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Row } from 'react-bootstrap';
 import Toggle from 'react-bootstrap-toggle';
 import "react-bootstrap-toggle/dist/bootstrap2-toggle.css";
 
 function ColorBlind(props) {
-  const [cbFriendly, setPref] = useState(
-    JSON.parse(localStorage.getItem('cbPref')) || false
-  );
+
+  const dispatch = useDispatch();
+  const cbFriendly = useSelector(state => state.colorblind);
 
   const handleChange = (() => {
-    let pref = !cbFriendly;
-    setPref(pref)
-    localStorage.setItem('cbPref', pref);
+    dispatch({type: 'COLOR_BLIND', payload: !cbFriendly})
   });
-
-  useEffect(() => {
-    props.status(cbFriendly);
-  }, [cbFriendly] );
 
   return (
     <Row className="d-flex flex-row justify-content-end align-items-center">
