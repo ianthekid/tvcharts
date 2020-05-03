@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center">
-      <Image id="logo" src={logo} fluid /> 
+      <Image id="logo" alt="TV Charts" src={logo} fluid /> 
       <h1 className="text-primary">TV Charts</h1>
       <h6 className="mb-3">Chart TV Show Ratings for an Entire Series</h6>
       <SearchForm />

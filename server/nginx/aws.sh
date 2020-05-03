@@ -26,7 +26,30 @@ else
   find $frontend/static -type f -exec sed -i "s,static/,//$CLOUDFRONT/static/,g" {} \;
 
   ## Upload to S3 Bucket. `sync --delete` mirrors source (frontend/) to target ($S3DIR)
-  AWS_ACCESS_KEY_ID=$AWS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET aws s3 sync --delete --cache-control='public, max-age=31536000, immutable' $frontend s3://$S3BUCKET/$S3DIR --acl public-read
+  ## Upload all files, except static .css/.js
+  AWS_ACCESS_KEY_ID=$AWS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET \
+  aws s3 sync --delete \
+  $frontend s3://$S3BUCKET/$S3DIR \
+  --exclude "static/css/*.css" \
+  --exclude "static/js/*.js" \
+  --cache-control='public, max-age=31536000, immutable' \
+  --acl public-read
+
+  ## Set metadata for CSS and JS files that are gzipped, then upload
+  types="css js"
+  for type in $types
+  do
+    echo "uploading .$type files"
+    AWS_ACCESS_KEY_ID=$AWS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET \
+    aws s3 sync --delete \
+    $frontend s3://$S3BUCKET/$S3DIR \
+    --exclude '*' \
+    --include "static/$type/*.$type" \
+    --content-encoding='gzip' \
+    --cache-control='public, max-age=31536000, immutable' \
+    --metadata-directive REPLACE \
+    --acl public-read
+  done
 
   echo "Done. Files sent to $CLOUDFRONT"
 fi
