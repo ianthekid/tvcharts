@@ -19,12 +19,10 @@ function EpisodeCount() {
     episodeRows.push(<Col key={i} className="episodeRows mb-1 d-flex justify-content-center align-items-center">{i}</Col>)
   }
 
-  const span = (scale < 0.6) ? 'h2' : '';
-
   return (
     <Col xs={1} className="mx-0 p-0" style={{maxWidth: '3rem'}}>
       <strong>&nbsp;</strong>
-      <span className={span}>{episodeRows}</span>
+      {episodeRows}
     </Col>
   );
 }

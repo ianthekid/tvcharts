@@ -6,7 +6,7 @@ TVCharts is a simple frontend / backend application with an API and multi-contai
 
 ## Tech Stack
 
-* React
+* React / Redux
 * NodeJS / Express
 * MongoDB
 * Nginx / letsencrypt
