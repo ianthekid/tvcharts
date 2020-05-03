@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Alert, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { Alert, Row, Col } from 'react-bootstrap';
 import { BestWorst, ColorBlind, Loading, Seasons, ShowDetails } from './';
-import api from '../lib/api';
-import pageTitle from '../lib/pageTitle';
+import { api, pageTitle } from '../lib/';
 
 function Show(props) {
   const [show, setShow] = useState({});
@@ -53,7 +52,7 @@ function Show(props) {
               <Col xs={6} sm={12}><BestWorst /></Col>
             </Row>
           </Col>
-          <Col lg={10} md={9} sm={8} id="ratings" style={{transform: `scale(${scale}`}}>
+          <Col lg={10} md={9} sm={8} id="ratings" style={{transform: `scale(${scale})`}}>
             <Seasons
               tconst={show.tconst}
               episodeCount={show.episodeCount}

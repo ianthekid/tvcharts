@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from 'react-bootstrap';
 import { SearchResults } from './';
-import api from '../lib/api';
-import useDebounce from '../lib/useDebounce';
+import { api, useDebounce } from '../lib/';
 
 function SearchAutoComplete(props) {
   const [display, setDisplay] = useState(true);

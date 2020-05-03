@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Image } from 'react-bootstrap';
 import { SearchForm } from './';
-import pageTitle from '../lib/pageTitle';
+import { pageTitle } from '../lib/';
 import logo from '../img/logo.svg'
 
 function Home() {

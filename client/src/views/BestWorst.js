@@ -7,13 +7,13 @@ function BestWorst(props) {
 
   const [best, setBest] = useState([]);
   const [worst, setworst] = useState([]);
-  const seasons = useSelector(state => state.seasons);
+  const episodes = useSelector(state => state.episodes);
 
   useEffect(() => {
-    seasons.sort((a, b) => a.averageRating - b.averageRating);
-    setBest( seasons.slice(-3).reverse() )
-    setworst( seasons.slice(0, 3).reverse() )
-  }, [seasons]);
+    episodes.sort((a, b) => a.averageRating - b.averageRating);
+    setBest( episodes.slice(-3).reverse() )
+    setworst( episodes.slice(0, 3).reverse() )
+  }, [episodes]);
 
   return (
     <Col className="text-left mt-2 mb-4">

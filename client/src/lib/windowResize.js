@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useDebounce from './useDebounce';
-import calculateScale from './calculateScale';
+import { calculateScale } from './';
 
 export default (scaleRef) => {
   const [scale, setScale] = useState(

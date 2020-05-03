@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
-import api from '../lib/api'
+import { api } from '../lib/'
 
 function ShowPoster(props) {
 

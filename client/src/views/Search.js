@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Container, Row, Col } from 'react-bootstrap';
 import { Loading, SearchResults } from './';
-import api from '../lib/api';
-import pageTitle from '../lib/pageTitle';
+import { api, pageTitle } from '../lib/';
 
 function Search(props) {
 

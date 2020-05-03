@@ -18,9 +18,9 @@ const showReducer = (state = '', action) => {
   }
 }
 
-const seasonsReducer = (state = [], action) => {
+const episodesReducer = (state = [], action) => {
   switch(action.type) {
-    case 'SEASONS':
+    case 'EPISODES':
       return action.payload
     default:
       return state;
@@ -44,7 +44,7 @@ const colorblindReducer = (state = cbPref, action) => {
 const rootReducer = combineReducers({
   scale: scaleReducer,
   show: showReducer,
-  seasons: seasonsReducer,
+  episodes: episodesReducer,
   colorblind: colorblindReducer
 });
 

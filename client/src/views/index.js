@@ -2,6 +2,7 @@ import About from './About';
 import BestWorst from './BestWorst';
 import ColorBlind from './ColorBlind';
 import Episode from './Episode';
+import EpisodeCount from './EpisodeCount';
 import Header from './Header';
 import Home from './Home';
 import List from './List';
@@ -20,6 +21,7 @@ export {
   BestWorst,
   ColorBlind,
   Episode,
+  EpisodeCount,
   Header,
   Home,
   List,
